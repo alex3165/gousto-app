@@ -1,8 +1,13 @@
 import { combineReducers } from "redux";
-import categoriesReducer from "./categories";
-import productsReducer from "./products";
+import categoriesReducer, { CategoriesState } from "./categories";
+import productsReducer, { ProductsState } from "./products";
 
-const rootReducer = combineReducers({
+export interface AppState {
+  categories: CategoriesState;
+  products: ProductsState;
+}
+
+const rootReducer = combineReducers<AppState>({
   categories: categoriesReducer,
   products: productsReducer
 });
