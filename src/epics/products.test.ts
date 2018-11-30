@@ -10,9 +10,9 @@ describe("getProducts", () => {
   it("Should dispatch set categories with the right payload", done => {
     const action$ = ActionsObservable.of(fetchProducts());
 
-    getProducts(action$)
+    getProducts(action$, {} as any, {})
       .toArray()
-      .subscribe((outputActions: any) => {
+      .subscribe(outputActions => {
         expect(outputActions).toEqual([setProducts(products.data)]);
         done();
       });

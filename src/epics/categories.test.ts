@@ -11,9 +11,9 @@ describe("getCategories", () => {
   it("Should dispatch set categories with the right payload", done => {
     const action$ = ActionsObservable.of(fetchCategories());
 
-    getCategories(action$)
+    getCategories(action$, {} as any, {})
       .toArray()
-      .subscribe((outputActions: any) => {
+      .subscribe(outputActions => {
         expect(outputActions).toEqual([setCategories(categories.data)]);
         done();
       });
