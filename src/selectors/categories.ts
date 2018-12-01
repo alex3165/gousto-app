@@ -3,5 +3,5 @@ import { AppState } from "../reducers";
 
 export const selectCategories = createSelector(
   (state: AppState) => state.categories,
-  categories => categories
+  categories => Object.values(categories).filter(cat => !cat.hidden)
 );

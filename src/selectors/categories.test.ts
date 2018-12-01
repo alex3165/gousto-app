@@ -11,6 +11,6 @@ describe("Categories selector tests", () => {
 
     const res = selectCategories(state);
 
-    expect(res).toHaveLength(2);
+    expect(res).toHaveLength(13);
   });
 });

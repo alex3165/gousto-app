@@ -1,7 +1,10 @@
 import { Action } from "redux";
 import { UPDATE_FILTER } from "../actions/filters";
 
-export type FiltersState = { [filter: string]: string };
+export interface FiltersState {
+  query: string;
+  category?: string;
+}
 
 export interface FilterAction extends Action {
   filter: string;
@@ -9,7 +12,7 @@ export interface FilterAction extends Action {
 }
 
 const filtersReducer = (
-  state: FiltersState = {},
+  state: FiltersState = { query: "" },
   action: FilterAction
 ): FiltersState => {
   const { type, filter, value } = action;

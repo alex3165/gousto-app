@@ -43,7 +43,7 @@ describe("App component tests", () => {
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
         categories={categoriesData.data}
-        products={productsData.data}
+        products={[]}
       />
     );
 
@@ -56,7 +56,6 @@ describe("App component tests", () => {
         updateFilter={jest.fn()}
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
-        selectedCategoryId="faeedf8a-bf7d-11e5-a0f9-02fada0dd3b9"
         categories={categoriesData.data}
         products={productsData.data}
       />

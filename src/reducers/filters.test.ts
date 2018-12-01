@@ -4,7 +4,7 @@ import { updateFilter } from "../actions/filters";
 describe("Filter reducer tests", () => {
   it("should override filters", () => {
     const newId = "myNewId";
-    const initialState = { category: "myId" };
+    const initialState = { category: "myId", query: "" };
     const action = updateFilter("category", newId);
     const res = filtersReducer(initialState, action);
 

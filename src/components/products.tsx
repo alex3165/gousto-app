@@ -2,9 +2,13 @@ import * as React from "react";
 import styled from "styled-components";
 import { Product } from "../reducers/products";
 
-export const ProductComp = styled.div``;
+export const ProductComp = styled.div`
+  cursor: pointer;
+`;
 
-export const ProductDescription = styled.div``;
+export const ProductDescription = styled.div`
+  color: #636e72;
+`;
 
 interface Props {
   data: Product[];

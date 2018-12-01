@@ -10,6 +10,8 @@ import { Products } from "./products";
 import styled from "styled-components";
 import { updateFilter } from "../actions/filters";
 import { Filters } from "../selectors/filters";
+import { selectCategories } from "../selectors/categories";
+import { selectProducts } from "../selectors/products";
 
 const Filter = styled.input``;
 
@@ -19,7 +21,6 @@ interface Props {
   updateFilter: typeof updateFilter;
   categories: Category[];
   products: Product[];
-  selectedCategoryId?: string;
 }
 
 export class App extends React.Component<Props> {
@@ -34,24 +35,24 @@ export class App extends React.Component<Props> {
 
   onUpdateQuery = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.currentTarget;
-    this.props.updateFilter(Filters.query, value);
+    this.props.updateFilter(Filters.query, value.toLowerCase());
   };
 
   render() {
-    const { categories, selectedCategoryId, products } = this.props;
+    const { categories, products } = this.props;
     return (
       <div>
         <Categories data={categories} onSelect={this.onSelectCategory} />
         <Filter onChange={this.onUpdateQuery} />
-        {selectedCategoryId && <Products data={products} />}
+        {!!products.length && <Products data={products} />}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: AppState) => ({
-  categories: Object.values(state.categories).filter(c => !c.hidden),
-  products: []
+  categories: selectCategories(state),
+  products: selectProducts(state)
 });
 
 const mapDispatchToProps = {

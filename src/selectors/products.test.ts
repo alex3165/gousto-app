@@ -8,7 +8,8 @@ describe("products selector tests", () => {
     const state: any = {
       products: productsReducer({}, setProducts(productsData.data)),
       filters: {
-        category: "17eb3f8e-bf7e-11e5-ab63-02fada0dd3b9"
+        category: "17eb3f8e-bf7e-11e5-ab63-02fada0dd3b9",
+        query: ""
       }
     };
 
@@ -21,7 +22,7 @@ describe("products selector tests", () => {
       products: productsReducer({}, setProducts(productsData.data)),
       filters: {
         category: "17eb3f8e-bf7e-11e5-ab63-02fada0dd3b9",
-        query: "Superbake"
+        query: "superbake"
       }
     };
 
