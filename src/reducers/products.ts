@@ -27,8 +27,8 @@ export interface Product {
   box_limit: number;
   always_on_menu: boolean;
   created_at: string;
-  categories: Category[];
-  attributes: ProductAttribute[];
+  categories?: Category[];
+  attributes?: ProductAttribute[];
   tags: string[];
   images: { [key: number]: ProductImage };
 }

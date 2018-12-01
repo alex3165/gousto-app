@@ -1,5 +1,12 @@
-import { FETCH_CATEGORIES } from "../actions/categories";
+import "rxjs/add/operator/switchMap";
+import "rxjs/add/operator/map";
+
+import { FETCH_CATEGORIES, setCategories } from "../actions/categories";
 import { Epic } from "redux-observable";
+import { get$ } from "../fetch";
 
 export const getCategories: Epic = action$ =>
-  action$.ofType(FETCH_CATEGORIES).map(() => ({ type: "noop" }));
+  action$
+    .ofType(FETCH_CATEGORIES)
+    .switchMap(() => get$("/categories"))
+    .map(response => setCategories(response.data));
