@@ -41,11 +41,17 @@ export default function productsReducer(
   state: ProductsState = initialState,
   action: ActionWithPayload<Product[]>
 ): ProductsState {
-  const { type } = action;
+  const { type, payload } = action;
 
   switch (type) {
     case SET_PRODUCTS:
-      return state;
+      return {
+        ...state,
+        ...payload.reduce(
+          (acc: ProductsState, next) => ((acc[next.id] = next), acc),
+          {}
+        )
+      };
     default:
       return state;
   }

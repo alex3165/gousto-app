@@ -18,11 +18,17 @@ export default function categoriesReducer(
   state: CategoriesState = initialState,
   action: ActionWithPayload<Category[]>
 ): CategoriesState {
-  const { type } = action;
+  const { type, payload } = action;
 
   switch (type) {
     case SET_CATEGORIES:
-      return state;
+      return {
+        ...state,
+        ...payload.reduce((acc: CategoriesState, next) => {
+          acc[next.id] = next;
+          return acc;
+        }, {})
+      };
     default:
       return state;
   }
