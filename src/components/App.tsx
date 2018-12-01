@@ -3,10 +3,15 @@ import { fetchCategories } from "../actions/categories";
 import { fetchProducts } from "../actions/products";
 import { connect } from "react-redux";
 import { AppState } from "../reducers";
+import { Category } from "../reducers/categories";
+import { Product } from "../reducers/products";
 
 interface Props {
   fetchCategories: typeof fetchCategories;
   fetchProducts: typeof fetchProducts;
+  categories: Category[];
+  products: Product[];
+  selectedCategoryId?: string;
 }
 
 export class App extends React.Component<Props> {
@@ -20,7 +25,10 @@ export class App extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = (state: AppState) => ({});
+const mapStateToProps = (state: AppState) => ({
+  categories: Object.values(state.categories),
+  products: []
+});
 
 const mapDispatchToProps = {
   fetchCategories,
