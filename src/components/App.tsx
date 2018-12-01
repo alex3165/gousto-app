@@ -9,7 +9,7 @@ interface Props {
   fetchProducts: typeof fetchProducts;
 }
 
-class App extends React.Component<Props> {
+export class App extends React.Component<Props> {
   componentWillMount() {
     this.props.fetchCategories();
     this.props.fetchProducts();

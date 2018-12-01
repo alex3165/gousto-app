@@ -15,7 +15,5 @@ const get = (endpoint: string, params: any) => {
   return fetch(url).then(res => res.json());
 };
 
-// Observable.ajax() would a better solution than Observable.fromPromise(fetch())
-// but Observable.ajax() is not working on the server side (tests), where isomorphic-fetch will
 export const get$ = (endpoint: string, params: any = {}) =>
   Observable.fromPromise(get(endpoint, params));
