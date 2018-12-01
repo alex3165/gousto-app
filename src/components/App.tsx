@@ -9,6 +9,7 @@ import { Categories } from "./categories";
 import { Products } from "./products";
 import styled from "styled-components";
 import { updateFilter } from "../actions/filters";
+import { Filters } from "../selectors/filters";
 
 const Filter = styled.input``;
 
@@ -28,12 +29,12 @@ export class App extends React.Component<Props> {
   }
 
   onSelectCategory = (categoryId: string) => {
-    this.props.updateFilter("category", categoryId);
+    this.props.updateFilter(Filters.category, categoryId);
   };
 
   onUpdateQuery = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.currentTarget;
-    this.props.updateFilter("query", value);
+    this.props.updateFilter(Filters.query, value);
   };
 
   render() {

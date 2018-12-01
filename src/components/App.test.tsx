@@ -11,6 +11,7 @@ describe("App component tests", () => {
   it("should renders without crashing", () => {
     const wrapper = shallow(
       <App
+        updateFilter={jest.fn()}
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
         categories={categoriesData.data}
@@ -24,6 +25,7 @@ describe("App component tests", () => {
   it("should render categories", () => {
     const wrapper = shallow(
       <App
+        updateFilter={jest.fn()}
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
         categories={categoriesData.data}
@@ -37,6 +39,7 @@ describe("App component tests", () => {
   it("Should not render products if no category is selected", () => {
     const wrapper = shallow(
       <App
+        updateFilter={jest.fn()}
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
         categories={categoriesData.data}
@@ -50,6 +53,7 @@ describe("App component tests", () => {
   it("should render products when selected category", () => {
     const wrapper = shallow(
       <App
+        updateFilter={jest.fn()}
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
         selectedCategoryId="faeedf8a-bf7d-11e5-a0f9-02fada0dd3b9"
