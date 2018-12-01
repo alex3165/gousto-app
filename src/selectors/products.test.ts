@@ -7,8 +7,10 @@ describe("products selector tests", () => {
   it("should return products for selected category", () => {
     const state: any = {
       products: productsReducer({}, setProducts(productsData.data)),
+      router: {
+        location: { search: "?categoryId=17eb3f8e-bf7e-11e5-ab63-02fada0dd3b9" }
+      },
       filters: {
-        category: "17eb3f8e-bf7e-11e5-ab63-02fada0dd3b9",
         query: ""
       }
     };
@@ -20,8 +22,10 @@ describe("products selector tests", () => {
   it("should return products given depending on the query filter", () => {
     const state: any = {
       products: productsReducer({}, setProducts(productsData.data)),
+      router: {
+        location: { search: "?categoryId=17eb3f8e-bf7e-11e5-ab63-02fada0dd3b9" }
+      },
       filters: {
-        category: "17eb3f8e-bf7e-11e5-ab63-02fada0dd3b9",
         query: "superbake"
       }
     };

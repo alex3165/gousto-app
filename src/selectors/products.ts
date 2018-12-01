@@ -6,14 +6,12 @@ export const selectProducts = createSelector(
   (state: AppState) => state.products,
   getCategoryFilter,
   getQueryFilter,
-  (products, categoryFilter, queryFilter) => {
-    return Object.values(products).filter(product => {
-      return (
-        product.title.toLowerCase().includes(queryFilter) &&
-        product.categories &&
+  (products, categoryFilter, queryFilter) =>
+    Object.values(products).filter(
+      ({ title, description, categories }) =>
+        `${description} ${title}`.toLowerCase().includes(queryFilter) &&
+        categories &&
         categoryFilter &&
-        product.categories.map(cat => cat.id).includes(categoryFilter)
-      );
-    });
-  }
+        categories.map(cat => cat.id).includes(categoryFilter)
+    )
 );

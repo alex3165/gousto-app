@@ -3,7 +3,6 @@ import { UPDATE_FILTER } from "../actions/filters";
 
 export interface FiltersState {
   query: string;
-  category?: string;
 }
 
 export interface FilterAction extends Action {

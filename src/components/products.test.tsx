@@ -29,4 +29,20 @@ describe("products component", () => {
       productsData.data[0].description
     );
   });
+
+  it("should show many description if user click on many products", () => {
+    const wrapper = shallow(<Products data={productsData.data} />);
+
+    wrapper
+      .find(ProductComp)
+      .at(0)
+      .simulate("click");
+
+    wrapper
+      .find(ProductComp)
+      .at(1)
+      .simulate("click");
+
+    expect(wrapper.find(ProductDescription)).toHaveLength(2);
+  });
 });

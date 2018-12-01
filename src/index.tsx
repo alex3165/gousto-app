@@ -1,14 +1,22 @@
 require("isomorphic-fetch");
 
+// IE11 polyfills
+if (!Object.values) Object.values = (o: any) => Object.keys(o).map(k => o[k]);
+const ES6Promise = require("es6-promise");
+ES6Promise.polyfill();
+
 import * as React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app";
 import { Provider } from "react-redux";
-import store from "./store";
+import store, { history } from "./store";
+import { ConnectedRouter } from "connected-react-router";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
 );

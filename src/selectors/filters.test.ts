@@ -3,10 +3,9 @@ import { getCategoryFilter, getQueryFilter } from "./filters";
 describe("Filters selector tests", () => {
   it("should select category", () => {
     const categoryValue = "helloworld";
+
     const state: any = {
-      filters: {
-        category: categoryValue
-      }
+      router: { location: { search: `?categoryId=${categoryValue}` } }
     };
 
     const res = getCategoryFilter(state);
