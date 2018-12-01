@@ -14,7 +14,7 @@ describe("products component", () => {
   it("should not render description at initial state", () => {
     const wrapper = shallow(<Products data={productsData.data} />);
 
-    expect(wrapper.find(ProductDescription)).toBeUndefined();
+    expect(wrapper.find(ProductDescription)).toHaveLength(0);
   });
 
   it("should show product description on click", () => {
@@ -25,6 +25,8 @@ describe("products component", () => {
       .first()
       .simulate("click");
 
-    expect(wrapper.find(ProductDescription)).toBeDefined();
+    expect(wrapper.find(ProductDescription).text()).toEqual(
+      productsData.data[0].description
+    );
   });
 });

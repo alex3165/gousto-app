@@ -9,6 +9,17 @@ interface Props {
   onSelect: (id: string) => any;
 }
 
-export const Categories: React.StatelessComponent<Props> = () => {
-  return <div />;
+export const Categories: React.StatelessComponent<Props> = ({
+  data,
+  onSelect
+}) => {
+  return (
+    <div>
+      {data.map(category => (
+        <CategoryComp key={category.id} onClick={() => onSelect(category.id)}>
+          {category.title}
+        </CategoryComp>
+      ))}
+    </div>
+  );
 };

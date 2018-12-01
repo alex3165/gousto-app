@@ -19,7 +19,28 @@ export class Products extends React.Component<Props, State> {
     selectedId: undefined
   };
 
+  selectProduct = (id: string) => {
+    this.setState({
+      selectedId: id
+    });
+  };
+
   render() {
-    return <div />;
+    const { data } = this.props;
+    const { selectedId } = this.state;
+    return (
+      <div>
+        {data.map(product => (
+          <div key={product.id}>
+            <ProductComp onClick={() => this.selectProduct(product.id)}>
+              {product.title}
+            </ProductComp>
+            {selectedId === product.id && (
+              <ProductDescription>{product.description}</ProductDescription>
+            )}
+          </div>
+        ))}
+      </div>
+    );
   }
 }
