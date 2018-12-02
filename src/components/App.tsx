@@ -36,6 +36,7 @@ interface Props {
   categories: Category[];
   products: Product[];
   selectedCategoryId?: string;
+  className?: string;
 }
 
 export class App extends React.Component<Props> {
@@ -56,9 +57,9 @@ export class App extends React.Component<Props> {
   };
 
   render() {
-    const { categories, products, selectedCategoryId } = this.props;
+    const { categories, products, selectedCategoryId, className } = this.props;
     return (
-      <Wrapper>
+      <Wrapper className={className}>
         <Categories
           data={categories}
           onSelect={this.onSelectCategory}

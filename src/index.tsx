@@ -11,11 +11,16 @@ import App from "./components/app";
 import { Provider } from "react-redux";
 import store, { history } from "./store";
 import { ConnectedRouter } from "connected-react-router";
+import styled from "styled-components";
+
+const StyledApp = styled(App)`
+  font-family: sans-serif;
+`;
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <StyledApp />
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
