@@ -1,5 +1,5 @@
 import * as React from "react";
-import { App } from "./app";
+import { Root } from "./root";
 import { shallow } from "enzyme";
 import { Categories } from "./categories";
 import { Products } from "./products";
@@ -10,10 +10,11 @@ const productsData = require("../mocks/products.json");
 describe("App component tests", () => {
   it("should renders without crashing", () => {
     const wrapper = shallow(
-      <App
+      <Root
         updateFilter={jest.fn()}
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
+        push={jest.fn()}
         categories={categoriesData.data}
         products={productsData.data}
       />
@@ -24,10 +25,11 @@ describe("App component tests", () => {
 
   it("should render categories", () => {
     const wrapper = shallow(
-      <App
+      <Root
         updateFilter={jest.fn()}
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
+        push={jest.fn()}
         categories={categoriesData.data}
         products={productsData.data}
       />
@@ -38,10 +40,11 @@ describe("App component tests", () => {
 
   it("Should not render products if no category is selected", () => {
     const wrapper = shallow(
-      <App
+      <Root
         updateFilter={jest.fn()}
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
+        push={jest.fn()}
         categories={categoriesData.data}
         products={[]}
       />
@@ -52,10 +55,11 @@ describe("App component tests", () => {
 
   it("should render products when selected category", () => {
     const wrapper = shallow(
-      <App
+      <Root
         updateFilter={jest.fn()}
         fetchCategories={jest.fn()}
         fetchProducts={jest.fn()}
+        push={jest.fn()}
         categories={categoriesData.data}
         products={productsData.data}
       />

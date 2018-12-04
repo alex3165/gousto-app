@@ -7,20 +7,20 @@ ES6Promise.polyfill();
 
 import * as React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/app";
+import Root from "./components/root";
 import { Provider } from "react-redux";
 import store, { history } from "./store";
 import { ConnectedRouter } from "connected-react-router";
 import styled from "styled-components";
 
-const StyledApp = styled(App)`
+const StyledRoot = styled(Root)`
   font-family: sans-serif;
 `;
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <StyledApp />
+      <StyledRoot />
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")

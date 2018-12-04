@@ -39,7 +39,7 @@ interface Props {
   className?: string;
 }
 
-export class App extends React.Component<Props> {
+export class Root extends React.Component<Props> {
   componentWillMount() {
     this.props.fetchCategories();
     this.props.fetchProducts();
@@ -88,4 +88,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(Root);
